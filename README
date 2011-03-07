@@ -1,0 +1,36 @@
+INTRODUCTION
+
+  I started designing a new project not-so-long-ago and wanted to store some
+  design color schemes on my trac wiki. It might seem useless to create a plugin  for this, since I could just as well used html blocks for it, but it was good 
+  practice on how to start Trac plugin development.
+
+COLORSCHEME
+
+  A quick way to add some ‘color schemes’ to your wiki pages.
+
+    [[ColorScheme(#00ff00, #ff0000, #0000ff)]]
+
+  or with comments:
+
+    {{{#!ColorScheme
+    #00ff00 green
+    rgb(255\,0\,0) red
+    "rgb(255, 255, 0)" Your title / description
+    #00f
+    }}}
+
+COLORGRADIENT
+
+  Basic:
+
+    [[ColorGradient(#00ff00, #ff0000, #0000ff)]]
+
+  same with a title:
+
+    {{{#!ColorGradient title="Your title / description"
+    #00ff00
+    rgb(255\,0\,0)
+    "rgb(255, 255, 0)"
+    #00f
+    }}}
+

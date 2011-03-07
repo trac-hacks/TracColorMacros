@@ -1,7 +1,8 @@
 INTRODUCTION
 
   I started designing a new project not-so-long-ago and wanted to store some
-  design color schemes on my trac wiki. It might seem useless to create a plugin  for this, since I could just as well used html blocks for it, but it was good 
+  design color schemes on my trac wiki. It might seem useless to create a plugin  
+  for this, since I could just as well used html blocks for it, but it was good 
   practice on how to start Trac plugin development.
 
 COLORSCHEME

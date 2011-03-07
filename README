@@ -5,6 +5,12 @@ INTRODUCTION
   for this, since I could just as well used html blocks for it, but it was good 
   practice on how to start Trac plugin development.
 
+DEPENDENCIES
+
+  This macro depends on Advanced Argument Parser for WikiMacros
+  http://trac-hacks.org/wiki/AdvParseArgsPlugin
+
+
 COLORSCHEME
 
   A quick way to add some ‘color schemes’ to your wiki pages.

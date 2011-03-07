@@ -1,0 +1,36 @@
+table.colorscheme, table.colorgradient {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table.colorscheme thead th, table.colorgradient thead th {
+  border: 1px solid black;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+table.colorscheme tbody.colorlist td, table.colorgradient td {
+  font-weight: bold;
+}
+
+table.colorscheme td, table.colorgradient td {
+  text-align: center;
+  padding: 10px;
+}
+
+table.colorscheme td div, table.colorgradient td div {
+  width: 120px;
+  text-align: center;
+}
+
+.colorscheme_top {
+
+  padding: 5px;
+  background-color: #e0dfdf;
+
+}
+
+.colorgradient {
+  height: 80px;
+}
+

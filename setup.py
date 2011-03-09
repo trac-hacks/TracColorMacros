@@ -4,11 +4,11 @@ from setuptools import setup
 
 __url__       = "https://github.com/vStone/TracColorMacros"
 __author__    = "Jan Vansteenkiste <jan@vstone.eu>"
-__date__      = "2011.03.07"
+__date__      = "2011.03.09"
 
 setup(
     name=     'TracColorMacros',
-    version=  '0.3',
+    version=  '0.4',
     packages= ['colormacro'],
     author = 'Jan Vansteenkiste',
     author_email = 'jan@vstone.eu',

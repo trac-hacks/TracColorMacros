@@ -8,6 +8,9 @@ from tracadvparseargs import *
 
 from colormacro import *
 
+import re
+
+
 class ColorMacroBase(WikiMacroBase):
 
   reg_table  = []
@@ -55,7 +58,6 @@ class ColorMacroBase(WikiMacroBase):
       if m:
         re_color['m'] = m
         re_color['type'] = reg['type']
-
         break
 
     if re_color['type'] == 'long_hex':
@@ -68,7 +70,9 @@ class ColorMacroBase(WikiMacroBase):
       re_color['rgb'] = [int(x) for x in (re_color['m'].group(2), re_color['m'].group(3), re_color['m'].group(4))]
       re_color['hex'] = '#%02x%02x%02x' % (re_color['rgb'][0], re_color['rgb'][1], re_color['rgb'][2])
 
-    del(re_color['m'])
+    #if 'm' in re_color:
+    #  del(re_color['m'])
+
     re_color['rgbp'] = u'rgb(%d,%d,%d)' % (re_color['rgb'][0], re_color['rgb'][1], re_color['rgb'][2])
 
     return re_color
@@ -91,7 +95,7 @@ class ColorGradientMacro(ColorMacroBase):
   {{{#!ColorGradient title="Your title / description"
   #00ff00
   rgb(255\,0\,0)
- "rgb(255, 255, 0)"
+  "rgb(255, 255, 0)"
   #00f
   }}}
   }}}
@@ -99,7 +103,7 @@ class ColorGradientMacro(ColorMacroBase):
   {{{#!ColorGradient title="Your title / description"
   #00ff00
   rgb(255\,0\,0)
- "rgb(255, 255, 0)"
+  "rgb(255, 255, 0)"
   #00f
   }}}
 
@@ -128,8 +132,13 @@ class ColorGradientMacro(ColorMacroBase):
 
   def expand_macro(self, formatter, name, content, args):
     title = 'Color Gradient'
+    classes = 'colorgradient';
+
     if args and 'title' in args:
       title = args['title']
+
+    if args and 'class' in args:
+      classes  += ' ' + args['class']
 
     colors = self._parse_arguments(content)
 
@@ -161,7 +170,7 @@ class ColorGradientMacro(ColorMacroBase):
 
     if len(tbody) > 0:
       
-      table = tag.table(class_='colorgradient')
+      table = tag.table(class_=classes)
       table()(tag.thead()(tag.th(colspan="2")(title)))
      
       table()(tag.tbody(class_='colorgradient')([tag.tr()(td) for td in tbody]))
@@ -189,7 +198,7 @@ class ColorSchemeMacro(ColorMacroBase):
   {{{#!ColorScheme
   #00ff00 green
   rgb(255\,0\,0) red
- "rgb(255, 255, 0)" Your title / description
+  "rgb(255, 255, 0)" Your title / description
   #00f
   }}}
   }}}
@@ -217,8 +226,14 @@ class ColorSchemeMacro(ColorMacroBase):
   def expand_macro(self, formatter, name, content, args):
 
     title = 'Color Scheme'
+    classes = 'colormacro' 
+
     if args and 'title' in args:
       title = args['title']
+
+    if args and 'class' in args:
+      classes  += ' ' + args['class']
+
 
     tbody = []
     have_comment = False
@@ -252,7 +267,7 @@ class ColorSchemeMacro(ColorMacroBase):
       if not have_comment:
         colcount -= 1
       
-      table = tag.table(class_='colorscheme')
+      table = tag.table(class_=classes)
       table()(tag.thead()(tag.th(colspan='%d' % colcount)(title)))
       ## Attach row in table.
       if have_comment:
@@ -262,4 +277,4 @@ class ColorSchemeMacro(ColorMacroBase):
 
       return table;
     else:
-      return tag.div(class_='colorscheme')('Nothing to display')
+      return tag.div(class_='colormacro')('Nothing to display')
